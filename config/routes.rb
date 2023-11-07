@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root "home#index"
-  scope '/mouse_studio_admin' do
+  namespace 'mouse_studio_admin' do
     get  "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"
+
+    resources :sessions, only: [:index, :show, :destroy]
   end
-  resources :sessions, only: [:index, :show, :destroy]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

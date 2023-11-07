@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class MouseStudioAdmin::SessionsController < ApplicationController
   skip_before_action :authenticate, only: %i[ new create ]
 
   before_action :set_session, only: :destroy
@@ -15,14 +15,15 @@ class SessionsController < ApplicationController
       @session = user.sessions.create!
       cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
 
-      redirect_to sessions_path, notice: "Signed in successfully"
+      redirect_to mouse_studio_admin_sessions_path, notice: "Signed in successfully"
     else
-      redirect_to sign_in_path(email_hint: params[:email]), alert: "That email or password is incorrect"
+      redirect_to mouse_studio_admin_sign_in_path(email_hint: params[:email]),
+                                                  alert: "That email or password is incorrect"
     end
   end
 
   def destroy
-    @session.destroy; redirect_to(sign_in_path, notice: "That session has been logged out")
+    @session.destroy; redirect_to(mouse_studio_admin_sign_in_path, notice: "That session has been logged out")
   end
 
   private
