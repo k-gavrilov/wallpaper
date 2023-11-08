@@ -15,7 +15,7 @@ class MouseStudioAdmin::SessionsController < ApplicationController
       @session = user.sessions.create!
       cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
 
-      redirect_to mouse_studio_admin_sessions_path, notice: "Signed in successfully"
+      redirect_to mouse_studio_admin_wallpapers_path, notice: "Signed in successfully"
     else
       redirect_to mouse_studio_admin_sign_in_path(email_hint: params[:email]),
                                                   alert: "That email or password is incorrect"
@@ -28,6 +28,6 @@ class MouseStudioAdmin::SessionsController < ApplicationController
 
   private
     def set_session
-      @session = Current.user.sessions.find(params[:id])
+      @session = Session.find_by_id(cookies.signed[:session_token])
     end
 end

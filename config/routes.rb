@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get  "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"
 
-    resources :sessions, only: [:index, :show, :destroy]
+    delete :sessions, to: "sessions#destroy"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
