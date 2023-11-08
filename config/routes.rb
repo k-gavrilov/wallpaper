@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
-  namespace 'mouse_studio_admin' do
+  namespace :mouse_studio_admin do
+    resources :wallpapers
     get  "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"
 

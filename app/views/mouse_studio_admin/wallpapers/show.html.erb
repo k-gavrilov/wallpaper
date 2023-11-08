@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @wallpaper %>
+
+<div>
+  <%= link_to "Edit this wallpaper", edit_mouse_studio_admin_wallpaper_path(@wallpaper) %> |
+  <%= link_to "Back to wallpapers", mouse_studio_admin_wallpapers_path %>
+
+  <%= button_to "Destroy this wallpaper", mouse_studio_admin_wallpaper_path(@wallpaper), method: :delete %>
+</div>

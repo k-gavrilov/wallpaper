@@ -1,0 +1,12 @@
+<div id="<%= dom_id wallpaper %>">
+  <p>
+    <strong>Category:</strong>
+    <%= wallpaper.category %>
+  </p>
+
+  <p>
+    <strong>Picture:</strong>
+    <%= link_to wallpaper.picture.filename, wallpaper.picture if wallpaper.picture.attached? %>
+  </p>
+
+</div>

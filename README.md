@@ -9,6 +9,10 @@ Things you may want to cover:
 
 * System dependencies
 
+ Active record image processing requires:
+1. gem "image_processing", "~> 1.2"
+2. apt install libvips42
+
 * Configuration
 
 * Database creation

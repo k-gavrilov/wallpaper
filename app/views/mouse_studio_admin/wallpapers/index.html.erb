@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Wallpapers</h1>
+
+<div id="wallpapers">
+  <% @wallpapers.each do |wallpaper| %>
+    <%= render wallpaper %>
+    <p>
+      <%= link_to "Show this wallpaper", mouse_studio_admin_wallpaper_path(wallpaper) %>
+    </p>
+    <p>
+      <%= link_to "Download", rails_blob_path(wallpaper.picture, disposition: 'attachment') %>
+    </p>
+    <p>
+      <%= image_tag wallpaper.picture.representation(resize_to_limit: [200, 200]) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New wallpaper", new_mouse_studio_admin_wallpaper_path %>
