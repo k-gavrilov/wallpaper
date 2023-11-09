@@ -1,4 +1,4 @@
-<%= form_with(model: wallpaper, url: mouse_studio_admin_wallpapers_url) do |form| %>
+<%= form_with(model: [:mouse_studio_admin, wallpaper]) do |form| %>
   <% if wallpaper.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(wallpaper.errors.count, "error") %> prohibited this wallpaper from being saved:</h2>
