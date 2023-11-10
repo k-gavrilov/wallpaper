@@ -21,16 +21,17 @@ class MouseStudioAdmin::WallpapersController < ApplicationController
 
   # POST /mouse_studio_admin/wallpapers or /mouse_studio_admin/wallpapers.json
   def create
-    @wallpaper = Wallpaper.new(wallpaper_params)
-
-    respond_to do |format|
-      if @wallpaper.save
-        format.html { redirect_to mouse_studio_admin_wallpaper_url(@wallpaper), notice: "Wallpaper was successfully created." }
-        format.json { render :show, status: :created, location: @wallpaper }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @wallpaper.errors, status: :unprocessable_entity }
-      end
+    pictures = wallpaper_params[:pictures].select(&:present?)
+    @wallpapers = pictures.map do |picture|
+      wallpaper = Wallpaper.new(category: wallpaper_params[:category])
+      wallpaper.picture.attach(picture)
+      wallpaper
+    end
+    if @wallpapers.all? { |w| w.valid? }
+      @wallpapers.each(&:save!)
+      redirect_to mouse_studio_admin_wallpapers_path, notice: "Wallpaper was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -65,6 +66,6 @@ class MouseStudioAdmin::WallpapersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wallpaper_params
-      params.require(:wallpaper).permit(:category, :picture)
+      params.require(:wallpaper).permit(:category, pictures: [])
     end
 end
