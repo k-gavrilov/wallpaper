@@ -1,12 +1,8 @@
 <div id="<%= dom_id wallpaper %>">
+  <h4><%= wallpaper.title %></h4>
+  <%= image_tag wallpaper.picture.representation(resize_to_limit: [200, 200]) %>
   <p>
-    <strong>Category:</strong>
-    <%= wallpaper.category %>
+    <%= link_to "Show this wallpaper", mouse_studio_admin_wallpaper_path(wallpaper) %>
   </p>
-
-  <p>
-    <strong>Picture:</strong>
-    <%= link_to wallpaper.picture.filename, wallpaper.picture if wallpaper.picture.attached? %>
-  </p>
-
+  <hr>
 </div>

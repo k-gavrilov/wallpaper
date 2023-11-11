@@ -1,3 +1,5 @@
+require 'exiftool'
+
 class MouseStudioAdmin::WallpapersController < ApplicationController
   before_action :set_wallpaper, only: %i[ show edit update destroy ]
 
@@ -21,11 +23,12 @@ class MouseStudioAdmin::WallpapersController < ApplicationController
 
   # POST /mouse_studio_admin/wallpapers or /mouse_studio_admin/wallpapers.json
   def create
+    category = wallpaper_params[:category]
     pictures = wallpaper_params[:pictures].select(&:present?)
-    @wallpapers = pictures.map do |picture|
-      wallpaper = Wallpaper.new(category: wallpaper_params[:category])
-      wallpaper.picture.attach(picture)
-      wallpaper
+    pictures_with_meta = files_hash_with_xmp_meta(pictures, [:title, :keywords])
+    @wallpapers = pictures_with_meta.map do |picture_with_meta|
+      complete_wallpaper_params = picture_with_meta.merge({category: category})
+      Wallpaper.new(complete_wallpaper_params)
     end
     if @wallpapers.all? { |w| w.valid? }
       @wallpapers.each(&:save!)
@@ -67,5 +70,20 @@ class MouseStudioAdmin::WallpapersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def wallpaper_params
       params.require(:wallpaper).permit(:category, pictures: [])
+    end
+
+    def files_hash_with_xmp_meta(pictures, meta_keys)
+      paths = pictures.map(&:path)
+      pictures_with_paths = pictures.map { |picture| {picture: picture, path: picture.path} }
+      e = Exiftool.new(paths)
+      pictures_with_paths.each_with_object([]) do |picture_with_path, pictures_with_meta|
+        meta_hash = e.result_for(picture_with_path[:path]).to_hash
+        picture_with_meta = {
+          picture: picture_with_path[:picture],
+          title: meta_hash[:title],
+          keywords: meta_hash[:keywords].join(", ")
+        }
+        pictures_with_meta << picture_with_meta
+      end
     end
 end

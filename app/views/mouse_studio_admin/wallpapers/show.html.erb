@@ -1,10 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @wallpaper %>
-
 <div>
+  <h1><%= @wallpaper.title || "Wallpaper#{@wallpaper.id}" %></h1>
+  <p>
+    <%= image_tag @wallpaper.picture.representation(resize_to_limit: [600, 600]) %>
+  </p>
+  <p>
+    <%= link_to "Download", rails_blob_path(@wallpaper.picture, disposition: 'attachment') %>
+  </p>
+  <h2>Keywords:</h2>
+  <p>
+    <%= @wallpaper.keywords || "N/A" %>
+  </p>
   <%= link_to "Edit this wallpaper", edit_mouse_studio_admin_wallpaper_path(@wallpaper) %> |
   <%= link_to "Back to wallpapers", mouse_studio_admin_wallpapers_path %>
 
-  <%= button_to "Destroy this wallpaper", mouse_studio_admin_wallpaper_path(@wallpaper), method: :delete %>
+
+  <%= button_to "Destroy this wallpaper", mouse_studio_admin_wallpaper_path(@wallpaper), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
 </div>

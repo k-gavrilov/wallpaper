@@ -13,6 +13,9 @@ Things you may want to cover:
 1. gem "image_processing", "~> 1.2"
 2. apt install libvips42
 
+For reading image metadata:
+1. apt install exiftool
+
 * Configuration
 
 * Database creation
