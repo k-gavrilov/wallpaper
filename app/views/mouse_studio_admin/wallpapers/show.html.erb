@@ -16,5 +16,5 @@
   <%= link_to "Back to wallpapers", mouse_studio_admin_wallpapers_path %>
 
 
-  <%= button_to "Destroy this wallpaper", mouse_studio_admin_wallpaper_path(@wallpaper), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+  <%= button_to "Destroy this wallpaper", mouse_studio_admin_wallpaper_path(@wallpaper), method: :delete, class: "btn btn-danger", onclick: "return confirm('Are you sure?')" %>
 </div>
