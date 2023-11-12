@@ -109,6 +109,7 @@ GEM
     exiftool (0.7.0)
       json
     ffi (1.16.3)
+    foreman (0.87.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -261,6 +262,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   exiftool (~> 0.7.0)
+  foreman (~> 0.87.2)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
