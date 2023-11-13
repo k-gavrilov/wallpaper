@@ -1,18 +1,20 @@
+$box-bg-color: #FFFFFF;
+$body-bg-color: #F4F4F4;
+
+html {
+  font-size: 16px;
+}
+
 body {
   max-width: 1420px !important;
-  margin: 0 auto !important;
-  background-color: #F4F4F4 !important;
+  background-color: $body-bg-color !important;
 }
 
-.picture-tile {
-  border-radius: 16px;
-}
-
-#wallpaper-container {
-  background-color: #FFFFFF;
+.content-block {
+  background-color: $box-bg-color;
   border-radius: 20px;
+  padding: 20px;
 }
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-

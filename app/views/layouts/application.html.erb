@@ -10,17 +10,21 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="mx-auto my-0">
     <div class="container">
-      <div class="row">
-        <%= render 'layouts/top_bar' %>
+      <div class="row mb-4">
+        <div class="col-xl-12">
+          <%= render 'layouts/top_bar' %>
+        </div>
       </div>
       <div class="row">
-        <div class="col-xl-2">
-          <%= render 'layouts/categories_sidebar' %>
-        </div>
-        <div class="col-xl-10">
+        <div class="col-xxl-10">
           <%= yield %>
+        </div>
+        <div class="col-xxl-2">
+          <div class="content-block">
+            <%= render 'layouts/categories_sidebar' %>
+          </div>
         </div>
       </div>
     </div>
