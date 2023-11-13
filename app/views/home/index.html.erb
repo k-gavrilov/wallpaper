@@ -1,9 +1,12 @@
-<h2>Here are many awesome wallpapers</h2>
-<div class="container text-center">
-  <div class="row">
+<h2>Free Craft 4k Wallpapers for iPhone and Samsung</h2>
+<div id="wallpaper-container" class="container text-center">
+  <div class="row py-4">
     <% @wallpapers.each do |wallpaper| %>
       <div class="col-xl-4 col-md-6">
-        <%= image_tag wallpaper.picture.representation(resize_to_limit: [280, 609]) %>
+        <%= image_tag wallpaper.picture.representation(resize_to_limit: [280, 609]), class: "picture-tile" %>
+        <p>
+          <%= wallpaper.title %>
+        </p>
       </div>
     <% end %>
   </div>
