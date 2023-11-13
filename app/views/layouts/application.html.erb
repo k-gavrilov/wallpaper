@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Wallpapers</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="mx-auto my-0">
-    <div class="container">
+  <body>
+    <div class="container main-container mx-auto my-0">
       <div class="row mb-4">
         <div class="col-xl-12">
           <%= render 'layouts/top_bar' %>
@@ -27,6 +26,8 @@
           </div>
         </div>
       </div>
+
     </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
