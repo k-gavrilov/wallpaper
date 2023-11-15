@@ -14,6 +14,9 @@ body {
 }
 
 footer {
+  padding-top: 20px;
+  padding-bottom: 24px;
+  margin-top: 24px;
   background-color: $box-bg-color;
 }
 
@@ -33,7 +36,12 @@ footer {
   padding: 10px 12px;
   justify-content: center;
   border-radius: 12px;
+  margin-right: 4px;
   background-color: $body-bg-color;
+}
+
+#copyright {
+  margin-top: 16px;
 }
 
 @import 'bootstrap/scss/bootstrap';
