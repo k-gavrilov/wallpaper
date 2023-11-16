@@ -1,5 +1,8 @@
 $box-bg-color: #FFFFFF;
 $body-bg-color: #F4F4F4;
+//redefining bootstrap colors
+$info: $body-bg-color;
+$success: #343434;
 
 html {
   font-size: 16px;
@@ -37,6 +40,7 @@ footer {
   justify-content: center;
   border-radius: 12px;
   margin-right: 4px;
+  margin-bottom: 4px;
   background-color: $body-bg-color;
 }
 
