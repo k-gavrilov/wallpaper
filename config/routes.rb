@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'static_pages/contact'
+  get 'static_pages/license'
+  get 'static_pages/privacy_policy'
   root "home#index"
   namespace :mouse_studio_admin do
     resources :wallpapers
