@@ -1,5 +1,6 @@
 $box-bg-color: #FFFFFF;
 $body-bg-color: #F4F4F4;
+$nav-button-hover: #7300E5;
 //redefining bootstrap colors
 $info: $body-bg-color;
 $success: #343434;
@@ -42,6 +43,18 @@ footer {
   margin-right: 4px;
   margin-bottom: 4px;
   background-color: $body-bg-color;
+}
+
+.nav-link {
+  transition: background-color 1s !important;
+  border-radius: 12px;
+  padding: 14px 20px !important;
+}
+
+.nav-link:hover {
+  background-color: $nav-button-hover !important;
+  color: $box-bg-color !important;
+  transition: background-color 1s;
 }
 
 #copyright {
