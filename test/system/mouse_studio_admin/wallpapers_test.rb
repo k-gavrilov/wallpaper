@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class MouseStudioAdmin::WallpapersTest < ApplicationSystemTestCase
+class Admin::WallpapersTest < ApplicationSystemTestCase
   setup do
     @wallpaper = wallpapers(:one)
   end
@@ -22,7 +22,7 @@ class MouseStudioAdmin::WallpapersTest < ApplicationSystemTestCase
   end
 
   test "should update Wallpaper" do
-    visit mouse_studio_admin_wallpaper_url(@wallpaper)
+    visit admin_wallpaper_url(@wallpaper)
     click_on "Edit this wallpaper", match: :first
 
     fill_in "Category", with: @wallpaper.category
@@ -33,7 +33,7 @@ class MouseStudioAdmin::WallpapersTest < ApplicationSystemTestCase
   end
 
   test "should destroy Wallpaper" do
-    visit mouse_studio_admin_wallpaper_url(@wallpaper)
+    visit admin_wallpaper_url(@wallpaper)
     click_on "Destroy this wallpaper", match: :first
 
     assert_text "Wallpaper was successfully destroyed"

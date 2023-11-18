@@ -1,0 +1,38 @@
+class Admin::CategoriesController < ApplicationController
+  before_action :new_category, only: [:new]
+
+  def index
+  end
+
+  def new
+  end
+
+  def create
+    category = Category.new(category_params)
+    if category.valid?
+      category.save!
+      redirect_to admin_categories_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
+  private
+
+  def new_category
+    @category = Category.new
+  end
+
+  def category_params
+    params.require(:category).permit(:name)
+  end
+end

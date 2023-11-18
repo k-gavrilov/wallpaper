@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'static_pages/license'
   get 'static_pages/privacy_policy'
   root "home#index"
-  namespace :mouse_studio_admin do
+  namespace :admin do
     resources :wallpapers
+    resources :categories, only: [:index, :new, :create, :update, :destroy]
     get  "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"
 

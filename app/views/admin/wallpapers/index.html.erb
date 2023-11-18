@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Wallpapers</h1>
+
+<div id="wallpapers">
+  <% @wallpapers.each do |wallpaper| %>
+    <%= render wallpaper %>
+  <% end %>
+</div>
+
+<%= link_to "New wallpaper", new_admin_wallpaper_path %>
+<%= link_to "New category", new_admin_category_path %>
+<%= button_to "Log out", admin_sessions_path, method: :delete, class: "btn btn-warning"%>

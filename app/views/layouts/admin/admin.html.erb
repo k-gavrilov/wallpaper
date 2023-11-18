@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Wallpapers admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+<div class="container-fluid main-container mx-auto my-0">
+  <div class="row mb-4">
+    <div class="col-xxl-12">
+      <%= render 'layouts/admin/top_bar' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= yield %>
+    </div>
+  </div>
+
+</div>
+<%= render 'layouts/footer' %>
+</body>
+</html>

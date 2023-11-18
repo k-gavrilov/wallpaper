@@ -1,0 +1,13 @@
+<h1>New category</h1>
+<%= form_with(model: [:admin, @category]) do |form| %>
+  <% if @category.errors.any? %>
+    <p class="text-danger">Errors:</p>
+    <% @category.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  <% end %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.submit %>
+<% end %>

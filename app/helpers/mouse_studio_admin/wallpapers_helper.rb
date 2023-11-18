@@ -1,2 +1,0 @@
-module MouseStudioAdmin::WallpapersHelper
-end

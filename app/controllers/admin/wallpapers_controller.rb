@@ -1,27 +1,27 @@
 require 'exiftool'
 
-class MouseStudioAdmin::WallpapersController < ApplicationController
+class Admin::WallpapersController < ApplicationController
   before_action :set_wallpaper, only: %i[ show edit update destroy ]
 
-  # GET /mouse_studio_admin/wallpapers or /mouse_studio_admin/wallpapers.json
+  # GET /admin/wallpapers or /admin/wallpapers.json
   def index
     @wallpapers = Wallpaper.all
   end
 
-  # GET /mouse_studio_admin/wallpapers/1 or /mouse_studio_admin/wallpapers/1.json
+  # GET /admin/wallpapers/1 or /admin/wallpapers/1.json
   def show
   end
 
-  # GET /mouse_studio_admin/wallpapers/new
+  # GET /admin/wallpapers/new
   def new
     @wallpaper = Wallpaper.new
   end
 
-  # GET /mouse_studio_admin/wallpapers/1/edit
+  # GET /admin/wallpapers/1/edit
   def edit
   end
 
-  # POST /mouse_studio_admin/wallpapers or /mouse_studio_admin/wallpapers.json
+  # POST /admin/wallpapers or /admin/wallpapers.json
   def create
     category = wallpaper_params[:category]
     pictures = wallpaper_params[:pictures].select(&:present?)
@@ -32,17 +32,17 @@ class MouseStudioAdmin::WallpapersController < ApplicationController
     end
     if @wallpapers.all? { |w| w.valid? }
       @wallpapers.each(&:save!)
-      redirect_to mouse_studio_admin_wallpapers_path, notice: "Wallpaper was successfully created."
+      redirect_to admin_wallpapers_path, notice: "Wallpaper was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /mouse_studio_admin/wallpapers/1 or /mouse_studio_admin/wallpapers/1.json
+  # PATCH/PUT /admin/wallpapers/1 or /admin/wallpapers/1.json
   def update
     respond_to do |format|
       if @wallpaper.update(wallpaper_params)
-        format.html { redirect_to mouse_studio_admin_wallpaper_url(@wallpaper), notice: "Wallpaper was successfully updated." }
+        format.html { redirect_to admin_wallpaper_url(@wallpaper), notice: "Wallpaper was successfully updated." }
         format.json { render :show, status: :ok, location: @wallpaper }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,12 +51,12 @@ class MouseStudioAdmin::WallpapersController < ApplicationController
     end
   end
 
-  # DELETE /mouse_studio_admin/wallpapers/1 or /mouse_studio_admin/wallpapers/1.json
+  # DELETE /admin/wallpapers/1 or /admin/wallpapers/1.json
   def destroy
     @wallpaper.destroy!
 
     respond_to do |format|
-      format.html { redirect_to mouse_studio_admin_wallpapers_path, notice: "Wallpaper was successfully destroyed." }
+      format.html { redirect_to admin_wallpapers_path, notice: "Wallpaper was successfully destroyed." }
       format.json { head :no_content }
     end
   end

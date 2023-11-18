@@ -2,7 +2,7 @@
   <h4><%= wallpaper.title %></h4>
   <%= image_tag wallpaper.picture.representation(resize_to_limit: [200, 200]) %>
   <p>
-    <%= link_to "Show this wallpaper", mouse_studio_admin_wallpaper_path(wallpaper) %>
+    <%= link_to "Show this wallpaper", admin_wallpaper_path(wallpaper) %>
   </p>
   <hr>
 </div>

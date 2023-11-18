@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MouseStudioAdmin::WallpaperTest < ActiveSupport::TestCase
+class Admin::WallpaperTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
