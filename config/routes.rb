@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'static_pages/privacy_policy'
   root "home#index"
   namespace :admin do
+    root 'wallpapers#index'
     resources :wallpapers
     resources :categories, only: [:index, :new, :create, :update, :destroy]
     get  "sign_in", to: "sessions#new"

@@ -1,4 +1,4 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < AdminController
   before_action :new_category, only: [:new]
   before_action :find_categories, only: [:index]
 

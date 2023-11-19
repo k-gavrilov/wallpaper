@@ -1,6 +1,6 @@
 require 'exiftool'
 
-class Admin::WallpapersController < ApplicationController
+class Admin::WallpapersController < AdminController
   before_action :set_wallpaper, only: %i[ show edit update destroy ]
 
   # GET /admin/wallpapers or /admin/wallpapers.json
