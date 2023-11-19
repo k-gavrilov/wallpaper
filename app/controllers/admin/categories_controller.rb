@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_action :new_category, only: [:new]
+  before_action :find_categories, only: [:index]
 
   def index
   end
@@ -34,5 +35,9 @@ class Admin::CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def find_categories
+    @categories = Category.all
   end
 end
