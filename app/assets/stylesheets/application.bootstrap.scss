@@ -4,6 +4,7 @@ $nav-button-hover: #7300E5;
 //redefining bootstrap colors
 $info: $body-bg-color;
 $success: #343434;
+$admin-title-color: $nav-button-hover;
 
 html {
   font-size: 16px;
@@ -59,6 +60,10 @@ footer {
 
 #copyright {
   margin-top: 16px;
+}
+
+#admin-title {
+  color: $admin-title-color !important;
 }
 
 @import 'bootstrap/scss/bootstrap';
