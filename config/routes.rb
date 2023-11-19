@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     root 'wallpapers#index'
     resources :wallpapers
     resources :categories, only: [:index, :new, :create, :update, :destroy]
+
     get  "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"
-
-    delete :sessions, to: "sessions#destroy"
+    delete "sessions", to: "sessions#destroy"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
