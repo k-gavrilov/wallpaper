@@ -12,6 +12,7 @@
   <p>
     <%= @wallpaper.keywords || "N/A" %>
   </p>
+  <h2>Category: <%= @wallpaper.category.name %></h2>
   <%= link_to "Edit this wallpaper", edit_admin_wallpaper_path(@wallpaper) %> |
   <%= link_to "Back to wallpapers", admin_wallpapers_path, class: "btn btn-info" %>
 
