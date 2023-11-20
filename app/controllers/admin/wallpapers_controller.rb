@@ -2,6 +2,7 @@ require 'exiftool'
 
 class Admin::WallpapersController < AdminController
   before_action :set_wallpaper, only: %i[ show edit update destroy ]
+  before_action :find_categories, only: %i[ new ]
 
   # GET /admin/wallpapers or /admin/wallpapers.json
   def index
@@ -23,11 +24,11 @@ class Admin::WallpapersController < AdminController
 
   # POST /admin/wallpapers or /admin/wallpapers.json
   def create
-    category = wallpaper_params[:category]
+    category_id = wallpaper_params[:category_id]
     pictures = wallpaper_params[:pictures].select(&:present?)
     pictures_with_meta = files_hash_with_xmp_meta(pictures, [:title, :keywords])
     @wallpapers = pictures_with_meta.map do |picture_with_meta|
-      complete_wallpaper_params = picture_with_meta.merge({category: category})
+      complete_wallpaper_params = picture_with_meta.merge({category_id: category_id})
       Wallpaper.new(complete_wallpaper_params)
     end
     if @wallpapers.all? { |w| w.valid? }
@@ -62,28 +63,32 @@ class Admin::WallpapersController < AdminController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wallpaper
-      @wallpaper = Wallpaper.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_wallpaper
+    @wallpaper = Wallpaper.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def wallpaper_params
-      params.require(:wallpaper).permit(:category, pictures: [])
-    end
+  def find_categories
+    @categories = Category.all.order(:name)
+  end
 
-    def files_hash_with_xmp_meta(pictures, meta_keys)
-      paths = pictures.map(&:path)
-      pictures_with_paths = pictures.map { |picture| {picture: picture, path: picture.path} }
-      e = Exiftool.new(paths)
-      pictures_with_paths.each_with_object([]) do |picture_with_path, pictures_with_meta|
-        meta_hash = e.result_for(picture_with_path[:path]).to_hash
-        picture_with_meta = {
-          picture: picture_with_path[:picture],
-          title: meta_hash[:title],
-          keywords: meta_hash[:keywords].join(", ")
-        }
-        pictures_with_meta << picture_with_meta
-      end
+  # Only allow a list of trusted parameters through.
+  def wallpaper_params
+    params.require(:wallpaper).permit(:category_id, pictures: [])
+  end
+
+  def files_hash_with_xmp_meta(pictures, meta_keys)
+    paths = pictures.map(&:path)
+    pictures_with_paths = pictures.map { |picture| {picture: picture, path: picture.path} }
+    e = Exiftool.new(paths)
+    pictures_with_paths.each_with_object([]) do |picture_with_path, pictures_with_meta|
+      meta_hash = e.result_for(picture_with_path[:path]).to_hash
+      picture_with_meta = {
+        picture: picture_with_path[:picture],
+        title: meta_hash[:title],
+        keywords: meta_hash[:keywords].join(", ")
+      }
+      pictures_with_meta << picture_with_meta
     end
+  end
 end
