@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<div>
+  <h1><%= @wallpaper.title || "Wallpaper#{@wallpaper.id}" %></h1>
+  <p>
+    <%= image_tag @wallpaper.picture %>
+  </p>
+  <h2>Keywords:</h2>
+  <p>
+    <%= @wallpaper.keywords || "N/A" %>
+  </p>
+  <h2>Category: <%= @wallpaper.category.name %></h2>
+  <p>
+    <%= link_to "Download", rails_blob_path(@wallpaper.picture, disposition: 'attachment') %>
+  </p>
+</div>
