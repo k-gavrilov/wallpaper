@@ -1,16 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
-<div>
-  <h1><%= @wallpaper.title || "Wallpaper#{@wallpaper.id}" %></h1>
-  <p>
-    <%= image_tag @wallpaper.picture %>
-  </p>
-  <h2>Keywords:</h2>
-  <p>
-    <%= @wallpaper.keywords || "N/A" %>
-  </p>
-  <h2>Category: <%= @wallpaper.category.name %></h2>
-  <p>
-    <%= link_to "Download", rails_blob_path(@wallpaper.picture, disposition: 'attachment') %>
-  </p>
+<div id="wallpaper-show-container" class="container-fluid content-block mb-5">
+  <div class="row">
+    <div class="col-xxl-8 d-flex flex-column justify-content-between">
+      <div>
+        <h1><%= @wallpaper.title || "Wallpaper#{@wallpaper.id}" %></h1>
+        <ul>
+          <li>Resolution: 736×1600 pixels</li>
+          <li>Category: <a class="violet-link"><%= @wallpaper.category.name %></a></li>
+          <li>Added on: <%= @wallpaper.created_at.strftime("%B %e, %Y") %></li>
+        </ul>
+        <p>
+          <%= button_to rails_blob_path(@wallpaper.picture, disposition: 'attachment'), class: 'download-button', method: :get do %>
+            <%= image_tag 'download.svg' %>
+            <span class="download-button-text">Download</span>
+          <% end %>
+        </p>
+      </div>
+      <div>
+        <h2>Keywords:</h2>
+        <p class="keywords">
+          <%= @wallpaper.keywords || "N/A" %>
+        </p>
+      </div>
+    </div>
+    <div class="col-xxl-4 text-center">
+      <%= image_tag @wallpaper.picture.representation(resize_to_limit: [280, 609]), class: "rounded-4" %>
+    </div>
+  </div>
 </div>

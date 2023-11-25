@@ -35,6 +35,10 @@ footer {
   padding: 20px;
 }
 
+#wallpaper-show-container {
+  padding: 56px;
+}
+
 .footer-link {
   min-width: 40px;
   min-height: 40px;
@@ -64,6 +68,54 @@ footer {
 
 #admin-title {
   color: $admin-title-color !important;
+}
+
+.download-button {
+  display: flex;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 10px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  background-color: $admin-title-color;
+  border-radius: 12px;
+  border: 0;
+
+  span.download-button-text {
+    min-width: 20px;
+    flex: 1 0 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    color: $body-bg-color;
+  }
+}
+
+.download-button:hover {
+  background-color: $success;
+}
+
+.violet-link {
+  color: $admin-title-color;
+  text-decoration: underline;
+}
+
+.violet-link:hover {
+  color: $success;
+}
+
+h1 {
+  font-size: 32px !important;
+}
+
+h2 {
+  font-size: 28px !important;
+}
+
+.keywords {
+  font-size: 20px;
 }
 
 @import 'bootstrap/scss/bootstrap';
