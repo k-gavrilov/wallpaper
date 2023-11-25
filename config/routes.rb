@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'wallpapers#index'
     resources :wallpapers
-    resources :categories, only: [:index, :new, :create, :update, :destroy]
+    resources :categories, only: [:index, :new, :create, :update, :destroy, :edit]
 
     get  "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"

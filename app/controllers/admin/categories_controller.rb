@@ -19,9 +19,17 @@ class Admin::CategoriesController < AdminController
   end
 
   def edit
+    @category = Category.find(params[:id])
   end
 
   def update
+    category = Category.find(params[:id])
+    if category && category.update(category_params)
+      category.save!
+      redirect_to admin_categories_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
