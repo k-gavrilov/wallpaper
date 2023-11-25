@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "Wallpapers", admin_wallpapers_path, class: "nav-link" %>
+          <%= link_to "Wallpapers", admin_wallpapers_path, class: "nav-link #{active_class(admin_wallpapers_path)} #{active_class(admin_root_path)}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Categories", admin_categories_path, class: "nav-link" %>
+          <%= link_to "Categories", admin_categories_path, class: "nav-link #{active_class(admin_categories_path)}" %>
         </li>
       </ul>
       <%= button_to "Log out", admin_sessions_path, method: :delete, class: "btn btn-warning"%>
