@@ -9,7 +9,7 @@
           <li>Added on: <%= @wallpaper.created_at.strftime("%B %e, %Y") %></li>
         </ul>
         <p>
-          <%= button_to rails_blob_path(@wallpaper.picture, disposition: 'attachment'), class: 'download-button', method: :get do %>
+          <%= link_to rails_blob_path(@wallpaper.picture, disposition: 'attachment'), class: 'download-button col-xxl-3 col-xl-3 col-md-3', method: :get do %>
             <%= image_tag 'download.svg' %>
             <span class="download-button-text">Download</span>
           <% end %>
