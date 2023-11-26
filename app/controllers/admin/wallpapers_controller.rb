@@ -86,7 +86,7 @@ class Admin::WallpapersController < AdminController
       picture_with_meta = {
         picture: picture_with_path[:picture],
         title: meta_hash[:title],
-        keywords: meta_hash[:keywords].join(", ")
+        keywords: meta_hash[:keywords]&.join(", ")
       }
       pictures_with_meta << picture_with_meta
     end
