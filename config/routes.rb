@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'static_pages/license'
   get 'static_pages/privacy_policy'
   get 'wallpapers/:id', to: "wallpapers#show", as: "wallpaper"
+  resources :categories, only: [:show]
+
   namespace :admin do
     root 'wallpapers#index'
     resources :wallpapers

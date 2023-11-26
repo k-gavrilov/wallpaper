@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
       Current.user_agent = request.user_agent
       Current.ip_address = request.ip
     end
+
+    def find_categories
+      @categories = Category.all
+    end
 end

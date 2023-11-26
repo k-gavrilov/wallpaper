@@ -1,15 +1,2 @@
 <h2>Free Craft 4k Wallpapers for iPhone and Samsung</h2>
-<div class="container text-center rounded-5 content-block">
-  <div class="row">
-    <% @wallpapers.each do |wallpaper| %>
-      <div class="col-xl-4 col-md-6 col-sm-6">
-        <%= link_to wallpaper_path(wallpaper), class: "col-xl-4 col-md-6 col-sm-6" do %>
-          <%= image_tag wallpaper.picture.representation(resize_to_limit: [280, 609]), class: "rounded-4" %>
-          <p>
-            <%= wallpaper.title %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render partial: 'wallpapers_gallery', locals: {wallpapers: @wallpapers} %>
