@@ -2,7 +2,7 @@
   <div class="row">
     <% wallpapers.each do |wallpaper| %>
       <div class="col-xl-4 col-md-6 col-sm-6">
-        <%= link_to wallpaper_path(wallpaper), class: "col-xl-4 col-md-6 col-sm-6" do %>
+        <%= link_to wallpaper_path(wallpaper), class: "col-xl-4 col-md-6 col-sm-6 violet-link" do %>
           <%= image_tag wallpaper.picture.representation(resize_to_limit: [280, 609]), class: "rounded-4" %>
           <p>
             <%= wallpaper.title %>
