@@ -5,6 +5,12 @@ $nav-button-hover: #7300E5;
 $info: $body-bg-color;
 $success: #343434;
 $admin-title-color: $nav-button-hover;
+$pagination-color: $success;
+$pagination-active-bg: $success;
+$pagination-active-border-color: $success;
+$pagination-hover-color: $nav-button-hover;
+$pagination-focus-color: $nav-button-hover;
+$pagination-focus-box-shadow: 0 0 0 0.25rem rgba(115, 0, 229, 0.25);
 
 html {
   font-size: 16px;
@@ -21,7 +27,6 @@ body {
 footer {
   padding-top: 20px;
   padding-bottom: 24px;
-  margin-top: 24px;
   background-color: $box-bg-color;
 }
 
@@ -117,6 +122,13 @@ h2 {
 .keywords {
   font-size: 20px;
 }
+
+.pagination-flex {
+  margin-top: 36px;
+}
+
+
+
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
