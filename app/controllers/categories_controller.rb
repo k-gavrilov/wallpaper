@@ -14,6 +14,6 @@ class CategoriesController < ApplicationController
   end
 
   def find_wallpapers
-    @wallpapers = Wallpaper.where(category: @category)
+    @wallpapers = Wallpaper.where(category: @category).page params[:page]
   end
 end
