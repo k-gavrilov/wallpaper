@@ -7,6 +7,7 @@
     <%= render wallpaper %>
   <% end %>
 </div>
+<div> <%= paginate @wallpapers %> </div>
 
 <%= link_to "New wallpaper", new_admin_wallpaper_path, class: "btn btn-success" %>
 <%= link_to "New category", new_admin_category_path, class: "btn btn-info" %>
