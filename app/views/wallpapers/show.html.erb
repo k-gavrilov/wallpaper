@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="col-xxl-4 text-center">
-      <%= image_tag @wallpaper.picture.representation(resize_to_limit: [280, 609]), class: "rounded-4" %>
+      <%= image_tag @wallpaper.picture.variant(:preview), class: "rounded-4" %>
     </div>
   </div>
 </div>
