@@ -14,7 +14,9 @@ $pagination-focus-color: $nav-button-hover;
 $pagination-focus-box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
 $pagination-hover-bg: $nav-button-hover;
 $body-max-width: 1420px;
+$gallery-max-width: 1159.33px;
 $gallery-card-max-width: 318px;
+$gallery-vertical-gap: ($gallery-max-width - $gallery-card-max-width*3) / 4;
 
 html {
   font-size: 16px;
@@ -133,9 +135,17 @@ h2 {
 }
 
 .gallery-flex {
-  padding-top: 32px;
-  padding-bottom: 32px;
-  gap: 24px
+  padding-top: $gallery-vertical-gap !important;
+  padding-bottom: $gallery-vertical-gap !important;
+
+  @media only screen and (min-width: 1400px) {
+    row-gap: $gallery-vertical-gap !important;
+  }
+
+  @media only screen and (max-width: 1399px) {
+    justify-content: center;
+    gap: 50px;
+  }
 }
 
 .gallery-card {
