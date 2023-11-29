@@ -1,7 +1,7 @@
 <h2>Categories</h2>
 <ul>
   <% @categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category), class: "violet-link" %></li>
+    <li><%= link_to category.name, category_path(category), class: "plain-link" %></li>
   <% end %>
 </ul>
 <!--<div class="col text-center">-->

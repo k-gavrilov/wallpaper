@@ -104,13 +104,14 @@ footer {
   background-color: $success;
 }
 
-.violet-link {
-  color: $admin-title-color;
-  text-decoration: underline;
+.plain-link {
+  color: $success;
+  font-size: 16px;
+  text-decoration: none;
 }
 
-.violet-link:hover {
-  color: $success;
+.plain-link:hover {
+  color: $nav-button-hover;
 }
 
 h1 {

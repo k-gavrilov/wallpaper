@@ -5,7 +5,7 @@
         <h1><%= @wallpaper.title || "Wallpaper#{@wallpaper.id}" %></h1>
         <ul>
           <li>Resolution: 736×1600 pixels</li>
-          <li>Category: <a class="violet-link"><%= @wallpaper.category.name %></a></li>
+          <li>Category: <a class="plain-link"><%= @wallpaper.category.name %></a></li>
           <li>Added on: <%= @wallpaper.created_at.strftime("%B %e, %Y") %></li>
         </ul>
         <p>
