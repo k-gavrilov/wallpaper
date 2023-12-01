@@ -16,7 +16,7 @@ $pagination-hover-bg: $nav-button-hover;
 $body-max-width: 1420px;
 $gallery-max-width: 1159.33px;
 $gallery-card-max-width: 318px;
-$gallery-vertical-gap: ($gallery-max-width - $gallery-card-max-width*3) / 4;
+$gallery-vertical-gap: calc(($gallery-max-width - $gallery-card-max-width*3) / 4);
 
 html {
   font-size: 16px;
