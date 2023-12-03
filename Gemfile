@@ -55,6 +55,12 @@ gem 'exiftool', '~> 0.7.0'
 # Pagination
 gem 'kaminari'
 
+gem "authentication-zero", "~> 3.0"
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"
+
+gem 'foreman', '~> 0.87.2'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -78,8 +84,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "authentication-zero", "~> 3.0"
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "~> 3.1.7"
+group :production do
+  gem "aws-sdk-s3", require: false
+end
 
-gem 'foreman', '~> 0.87.2'
+
