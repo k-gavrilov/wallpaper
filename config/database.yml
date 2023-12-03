@@ -4,7 +4,7 @@ default: &default
   reconnect: false
   port: 5432
   pool: 5
-  host: <%= ENV["POSTGRES_HOST"] || "localhost" %>
+  host: "localhost"
   username: wallpaper
   password: wallpaper
 
@@ -20,5 +20,8 @@ test:
   database: wallpaper_test
 
 production:
-  <<: *default
-  database: wallpaper_prod
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  url: <%= ENV['POSTGRES_URL'] %>
