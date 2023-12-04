@@ -41,25 +41,17 @@ class Admin::WallpapersController < AdminController
 
   # PATCH/PUT /admin/wallpapers/1 or /admin/wallpapers/1.json
   def update
-    respond_to do |format|
-      if @wallpaper.update(wallpaper_params)
-        format.html { redirect_to admin_wallpaper_url(@wallpaper), notice: "Wallpaper was successfully updated." }
-        format.json { render :show, status: :ok, location: @wallpaper }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @wallpaper.errors, status: :unprocessable_entity }
-      end
+    if @wallpaper.update(wallpaper_params)
+      redirect_to admin_wallpaper_url(@wallpaper), notice: "Wallpaper was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /admin/wallpapers/1 or /admin/wallpapers/1.json
   def destroy
     @wallpaper.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to admin_wallpapers_path, notice: "Wallpaper was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to admin_wallpapers_path, notice: "Wallpaper was successfully destroyed."
   end
 
   private
