@@ -2,12 +2,12 @@
 
 <h1>Wallpapers</h1>
 
+<%= link_to "New wallpaper", new_admin_wallpaper_path, class: "btn btn-success" %>
+<%= link_to "New category", new_admin_category_path, class: "btn btn-info" %>
+
 <div id="wallpapers">
   <% @wallpapers.each do |wallpaper| %>
     <%= render wallpaper %>
   <% end %>
 </div>
 <div> <%= paginate @wallpapers %> </div>
-
-<%= link_to "New wallpaper", new_admin_wallpaper_path, class: "btn btn-success" %>
-<%= link_to "New category", new_admin_category_path, class: "btn btn-info" %>
