@@ -1,12 +1,15 @@
-<%= form_with(model: [:admin, @category]) do |form| %>
+<%= form_with(model: [:admin, @category], class: "col-xxl-6") do |form| %>
   <% if @category.errors.any? %>
-    <p class="text-danger">Errors:</p>
+    <p class="text-danger mb-3">Errors:</p>
     <% @category.errors.each do |error| %>
       <li><%= error.full_message %></li>
     <% end %>
   <% end %>
 
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.submit %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <%= form.submit class: "mb-3 btn btn-primary" %>
 <% end %>

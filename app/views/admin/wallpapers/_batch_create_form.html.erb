@@ -1,6 +1,6 @@
-<%= form_with(model: [:admin, wallpaper]) do |form| %>
+<%= form_with(model: [:admin, wallpaper], class: "col-xxl-6") do |form| %>
   <% if wallpaper.errors.any? %>
-    <div style="color: red">
+    <div style="color: red" class="mb-3">
       <h2><%= pluralize(wallpaper.errors.count, "error") %> prohibited this wallpaper from being saved:</h2>
 
       <ul>
@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.collection_select :category_id, @categories, :id, :name %>
+  <div class="mb-3">
+    <%= form.label :category, style: "display: block", class: "form-label" %>
+    <%= form.collection_select :category_id, @categories, :id, :name, {}, { class: "form-select" } %>
   </div>
 
-  <div>
-    <%= form.label :picture, style: "display: block" %>
-    <%= form.file_field :pictures, multiple: true %>
+  <div class="mb-3">
+    <%= form.label :picture, style: "display: block", class: "form-label" %>
+    <%= form.file_field :pictures, multiple: true, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
