@@ -2,7 +2,8 @@
   <h4><%= wallpaper.title %></h4>
   <%= image_tag wallpaper.picture.variant(:preview) %>
   <p>
-    <%= link_to "Show this wallpaper", admin_wallpaper_path(wallpaper) %>
+    <%= link_to "Show this wallpaper", admin_wallpaper_path(wallpaper), class: "pe-3 py-3" %>
+    <%= link_to "Edit this wallpaper", edit_admin_wallpaper_path(wallpaper), class: "py-3" %>
   </p>
   <hr>
 </div>
