@@ -1,6 +1,6 @@
 <h1>Editing wallpaper</h1>
 
-<%= render "form", wallpaper: @wallpaper %>
+<%= render partial: "form", locals: { wallpaper: @wallpaper, categories: @categories } %>
 
 <br>
 

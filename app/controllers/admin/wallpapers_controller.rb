@@ -2,7 +2,7 @@ require 'exiftool'
 
 class Admin::WallpapersController < AdminController
   before_action :set_wallpaper, only: %i[ show edit update destroy ]
-  before_action :find_categories, only: %i[ new ]
+  before_action :find_categories, only: %i[ new edit ]
 
   # GET /admin/wallpapers or /admin/wallpapers.json
   def index
@@ -41,7 +41,7 @@ class Admin::WallpapersController < AdminController
 
   # PATCH/PUT /admin/wallpapers/1 or /admin/wallpapers/1.json
   def update
-    if @wallpaper.update(wallpaper_params)
+    if @wallpaper.update(wallpaper_edit_params)
       redirect_to admin_wallpaper_url(@wallpaper), notice: "Wallpaper was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -67,6 +67,10 @@ class Admin::WallpapersController < AdminController
   # Only allow a list of trusted parameters through.
   def wallpaper_params
     params.require(:wallpaper).permit(:category_id, pictures: [])
+  end
+
+  def wallpaper_edit_params
+    params.require(:wallpaper).permit(:category_id, :keywords, :title)
   end
 
   def files_hash_with_xmp_meta(pictures, meta_keys)
