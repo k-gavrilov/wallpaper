@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Free 4K wallpapers for your phone | Gallery of beautiful AI generated images | wall-paper.gallery</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A large gallery of free beautiful wallpapers created with Artificial intelligence.
+     Download free high-resolution images for iPhone and Android on the topics Anime, nature, architecture, abstraction, etc.">
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<div class="container-fluid main-container mx-auto mt-3 mb-0">
+  <div class="row mb-3">
+    <div class="col-xxl-12">
+      <%= render 'layouts/top_bar' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xxl-12 mb-4">
+      <div class="content-block">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</div>
+<%= render 'layouts/footer' %>
+</body>
+</html>
