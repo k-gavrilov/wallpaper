@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <meta charset="UTF-8">
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+  <%= render partial: 'layouts/favicons_setup' %>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
