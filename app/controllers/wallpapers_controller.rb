@@ -13,7 +13,7 @@ class WallpapersController < ApplicationController
   private
 
   def find_wallpapers
-    @wallpapers = Wallpaper.order(:id).page params[:page]
+    @wallpapers = Wallpaper.order(created_at: :desc).page params[:page]
   end
 
   def find_wallpaper
