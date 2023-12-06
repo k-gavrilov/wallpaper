@@ -25,16 +25,21 @@ class Admin::WallpapersController < AdminController
   # POST /admin/wallpapers or /admin/wallpapers.json
   def create
     category_id = wallpaper_params[:category_id]
+    Rails.logger.debug("----WALLPAPER_PARAMS:" + wallpaper_params.inspect)
+    Rails.logger.debug("----PICTURES: " + wallpaper_params[:pictures].inspect)
     pictures = wallpaper_params[:pictures].select(&:present?)
     pictures_with_meta = files_hash_with_xmp_meta(pictures, [:title, :keywords])
+    Rails.logger.debug("----PICTURES_WITH_META: " + pictures_with_meta.inspect)
     @wallpapers = pictures_with_meta.map do |picture_with_meta|
       complete_wallpaper_params = picture_with_meta.merge({category_id: category_id})
       Wallpaper.new(complete_wallpaper_params)
     end
     if @wallpapers.all? { |w| w.valid? }
+      Rails.logger.debug("----WE-ARE-IN-VALID")
       @wallpapers.each(&:save!)
       redirect_to admin_wallpapers_path, notice: "Wallpaper was successfully created."
     else
+      Rails.logger.debug("-----INVALID--" + @wallpapers.errors.messages.inspect)
       render :new, status: :unprocessable_entity
     end
   end
@@ -79,6 +84,7 @@ class Admin::WallpapersController < AdminController
     e = Exiftool.new(paths)
     pictures_with_paths.each_with_object([]) do |picture_with_path, pictures_with_meta|
       meta_hash = e.result_for(picture_with_path[:path]).to_hash
+      Rails.logger.debug("-----------------------++++++++META: " + meta_hash.inspect)
       picture_with_meta = {
         picture: picture_with_path[:picture],
         title: meta_hash[:title],
