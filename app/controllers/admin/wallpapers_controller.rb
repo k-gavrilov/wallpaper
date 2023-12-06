@@ -28,7 +28,7 @@ class Admin::WallpapersController < AdminController
     Rails.logger.debug("----WALLPAPER_PARAMS:" + wallpaper_params.inspect)
     Rails.logger.debug("----PICTURES: " + wallpaper_params[:pictures].inspect)
     pictures = wallpaper_params[:pictures].select(&:present?)
-    pictures_with_meta = files_hash_with_xmp_meta(pictures, [:title, :keywords])
+    pictures_with_meta = files_hash_with_xmp_meta(pictures, [:object_name, :keywords])
     Rails.logger.debug("----PICTURES_WITH_META: " + pictures_with_meta.inspect)
     @wallpapers = pictures_with_meta.map do |picture_with_meta|
       complete_wallpaper_params = picture_with_meta.merge({category_id: category_id})
@@ -87,7 +87,7 @@ class Admin::WallpapersController < AdminController
       Rails.logger.debug("-----------------------++++++++META: " + meta_hash.inspect)
       picture_with_meta = {
         picture: picture_with_path[:picture],
-        title: meta_hash[:title],
+        title: meta_hash[:object_name],
         keywords: meta_hash[:keywords]&.join(", ")
       }
       pictures_with_meta << picture_with_meta
