@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
     end
 
     def find_categories
-      @categories = Category.all
+        @categories = Category.all.order(name: :asc)
     end
 end
