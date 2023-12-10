@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap');
+
 $box-bg-color: #FFFFFF;
 $body-bg-color: #F4F4F4;
 $nav-button-hover: #7300E5;
@@ -17,6 +19,7 @@ $body-max-width: 1420px;
 $gallery-max-width: 1159.33px;
 $gallery-card-max-width: 318px;
 $gallery-vertical-gap: calc(($gallery-max-width - $gallery-card-max-width*3) / 4);
+$font-family-base: Inter;
 
 html {
   font-size: 16px;
@@ -152,6 +155,9 @@ h2 {
   max-width: $gallery-card-max-width;
 }
 
+h1, h2, h3, h4, h5 {
+  font-weight: 600 !important;
+}
 
 
 
