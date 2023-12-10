@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   get 'static_pages/license'
   get 'static_pages/privacy_policy'
   get 'wallpapers/:id', to: "wallpapers#show", as: "wallpaper"
-  resources :categories, only: [:show]
+  resources :collections, only: [:show]
 
   namespace :admin do
     root 'wallpapers#index'
     resources :wallpapers
-    resources :categories, only: [:index, :new, :create, :update, :destroy, :edit]
+    resources :collections, only: [:index, :new, :create, :update, :destroy, :edit]
 
     get  "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"

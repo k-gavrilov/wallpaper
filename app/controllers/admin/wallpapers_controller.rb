@@ -2,7 +2,7 @@ require 'exiftool'
 
 class Admin::WallpapersController < AdminController
   before_action :set_wallpaper, only: %i[ show edit update destroy ]
-  before_action :find_categories, only: %i[ new edit ]
+  before_action :find_collections, only: %i[ new edit ]
 
   # GET /admin/wallpapers or /admin/wallpapers.json
   def index
@@ -24,11 +24,11 @@ class Admin::WallpapersController < AdminController
 
   # POST /admin/wallpapers or /admin/wallpapers.json
   def create
-    category_id = wallpaper_params[:category_id]
+    collection_id = wallpaper_params[:collection_id]
     pictures = wallpaper_params[:pictures].select(&:present?)
     pictures_with_meta = files_hash_with_xmp_meta(pictures, [:object_name, :keywords])
     @wallpapers = pictures_with_meta.map do |picture_with_meta|
-      complete_wallpaper_params = picture_with_meta.merge({category_id: category_id})
+      complete_wallpaper_params = picture_with_meta.merge({collection_id: collection_id})
       Wallpaper.new(complete_wallpaper_params)
     end
     if @wallpapers.all? { |w| w.valid? }
@@ -60,17 +60,17 @@ class Admin::WallpapersController < AdminController
     @wallpaper = Wallpaper.find(params[:id])
   end
 
-  def find_categories
-    @categories = Category.all.order(:name)
+  def find_collections
+    @collections = Collection.all.order(:name)
   end
 
   # Only allow a list of trusted parameters through.
   def wallpaper_params
-    params.require(:wallpaper).permit(:category_id, pictures: [])
+    params.require(:wallpaper).permit(:collection_id, pictures: [])
   end
 
   def wallpaper_edit_params
-    params.require(:wallpaper).permit(:category_id, :keywords, :title)
+    params.require(:wallpaper).permit(:collection_id, :keywords, :title)
   end
 
   def files_hash_with_xmp_meta(pictures, meta_keys)

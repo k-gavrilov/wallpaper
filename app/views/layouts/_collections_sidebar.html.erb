@@ -1,0 +1,10 @@
+<h2>Collections</h2>
+<ul>
+  <% @collections.each do |collection| %>
+    <li><%= link_to collection.name, collection_path(collection), class: "plain-link" %></li>
+  <% end %>
+</ul>
+<!--<div class="col text-center">-->
+  <%#= button_to "Show all", root_url, class: "btn btn-info" %>
+<!--</div>-->
+

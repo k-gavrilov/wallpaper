@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       Current.ip_address = request.ip
     end
 
-    def find_categories
-        @categories = Category.all.order(name: :asc)
+    def find_collections
+        @collections = Collection.all.order(name: :asc)
     end
 end

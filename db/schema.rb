@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_19_151454) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_10_223820) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,11 +42,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_151454) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "collections", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true
+    t.index ["name"], name: "index_collections_on_name", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -68,12 +71,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_151454) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.text "keywords"
-    t.integer "category_id", null: false
-    t.index ["category_id"], name: "index_wallpapers_on_category_id"
+    t.integer "collection_id", null: false
+    t.index ["collection_id"], name: "index_wallpapers_on_collection_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "sessions", "users"
-  add_foreign_key "wallpapers", "categories"
+  add_foreign_key "wallpapers", "collections"
 end
