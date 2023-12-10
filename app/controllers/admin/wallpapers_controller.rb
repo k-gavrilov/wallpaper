@@ -6,7 +6,7 @@ class Admin::WallpapersController < AdminController
 
   # GET /admin/wallpapers or /admin/wallpapers.json
   def index
-    @wallpapers = Wallpaper.order(:id).page(params[:page])
+    @wallpapers = Wallpaper.order(created_at: :desc).page(params[:page])
   end
 
   # GET /admin/wallpapers/1 or /admin/wallpapers/1.json
