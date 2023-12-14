@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/license'
   get 'static_pages/privacy_policy'
+  get 'static_pages/about'
   get 'wallpapers/:id', to: "wallpapers#show", as: "wallpaper"
   resources :collections, only: [:show]
 
