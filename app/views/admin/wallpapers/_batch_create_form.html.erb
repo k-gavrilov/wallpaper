@@ -22,6 +22,11 @@
   </div>
 
   <div class="mb-3">
+    <%= form.label :prompt_formula %>
+    <%= form.text_area :prompt_formula, class: "form-control", rows: 10%>
+  </div>
+
+  <div class="mb-3">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

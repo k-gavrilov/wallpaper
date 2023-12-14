@@ -13,6 +13,12 @@
     <%= @wallpaper.keywords || "N/A" %>
   </p>
   <h2>Collection: <%= @wallpaper.collection.name %></h2>
+  <div>
+    <h2>Prompt:</h2>
+    <p>
+      <%= @wallpaper.prompt_formula || "Coming soon!" %>
+    </p>
+  </div>
   <%= link_to "Edit this wallpaper", edit_admin_wallpaper_path(@wallpaper) %> |
   <%= link_to "Back to wallpapers", admin_wallpapers_path, class: "btn btn-info" %>
 

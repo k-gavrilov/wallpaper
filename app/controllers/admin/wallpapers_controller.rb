@@ -25,10 +25,12 @@ class Admin::WallpapersController < AdminController
   # POST /admin/wallpapers or /admin/wallpapers.json
   def create
     collection_id = wallpaper_params[:collection_id]
+    prompt_formula = wallpaper_params[:prompt_formula]
     pictures = wallpaper_params[:pictures].select(&:present?)
     pictures_with_meta = files_hash_with_xmp_meta(pictures, [:object_name, :keywords])
     @wallpapers = pictures_with_meta.map do |picture_with_meta|
-      complete_wallpaper_params = picture_with_meta.merge({collection_id: collection_id})
+      complete_wallpaper_params = picture_with_meta.merge({collection_id: collection_id,
+                                                           prompt_formula: prompt_formula})
       Wallpaper.new(complete_wallpaper_params)
     end
     if @wallpapers.all? { |w| w.valid? }
@@ -66,11 +68,11 @@ class Admin::WallpapersController < AdminController
 
   # Only allow a list of trusted parameters through.
   def wallpaper_params
-    params.require(:wallpaper).permit(:collection_id, pictures: [])
+    params.require(:wallpaper).permit(:collection_id, :prompt_formula, pictures: [])
   end
 
   def wallpaper_edit_params
-    params.require(:wallpaper).permit(:collection_id, :keywords, :title)
+    params.require(:wallpaper).permit(:collection_id, :keywords, :title, :prompt_formula)
   end
 
   def files_hash_with_xmp_meta(pictures, meta_keys)

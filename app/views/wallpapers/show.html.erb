@@ -21,6 +21,12 @@
           <%= @wallpaper.keywords || "N/A" %>
         </p>
       </div>
+      <div>
+        <h2>Prompt:</h2>
+        <p class="prompt-formula">
+          <%= @wallpaper.prompt_formula || "Coming soon!" %>
+        </p>
+      </div>
     </div>
     <div class="col-xxl-4 text-center">
       <%= image_tag @wallpaper.picture.variant(:preview), class: "rounded-4" %>
